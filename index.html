@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,51 +8,87 @@
     <title>Garden App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <style>
-    .html{
-        background-image: url("http://www.thegardencentral.com/wp-content/uploads/2016/04/vegetable-garden-odds-Important-tips-and-measures.jpg")
-    }
+        body {
+            background-image: url("https://files.slack.com/files-pri/TD160CP16-FHSK5U0JZ/californiaflowerswaterhorizontal.jpg");
+
+        }
+
+        .formbg {
+            background-color: #55626b;
+        }
+
+        .jumbotron {
+            background-color: #0d0d0d;
+        }
+        
     </style>
+
 </head>
 
 <body class="html">
-    <div class="container">
-        <div class="row mb-1 mt-2">
-            <div class="col-12">
-                <div class="jumbotron text-center text-light bg-success">
-                    <h1> Welcome to Garden Planing App</h1>
-                    <h5> The Success Of Your Vegetables Growth Is Important To Us</h5>
+    <div class="container text-justify">
+        <div class="card"></div>
+        <div class="card-body ">
+            <div class="row mt-5 pt-5">
+                <div class="col-12">
+                    <div class="jumbotron text-center text-light ">
+                        <h1> Trail Maintence Scheduler</h1>
+                    </div>
                 </div>
             </div>
+
+            <div class="formbg font-italic text-light p-4">
+
+                <div class="row mb-1">
+                    <div class="col-12">
+
+                        <form class="p-4">
+                            <div class="form-group">
+                                <label for="localforecast">Check your local forecast:</label>
+                                <input type="text" class="form-control" id="forecast">
+                            </div>
+                            <div class="form-group">
+                                <label for="trail">Find a trail Scheduled for maintenace near you:</label>
+                                <input type="text" class="form-control" id="maintenace">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row pb-5">
+                    <div class="col">
+                        <form class="pl-4 pr-4">
+                            <label for="trail">Your name:</label>
+                            <div class="form-row">
+
+                                <div class="col-6">
+
+                                    <input type="text" class="form-control" placeholder="First name">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" placeholder="Last name">
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="pl-4 pb-5">
+                    <button type="submit" class="btn btn-secondary ">Submit</button>
+                </div>
+            </div>
+
+
         </div>
 
-        <div class="form-row text-light ">
-            <div class="form-group col-md-6">
-                <label for="nameofVegetable"><h3>Vegetable Name</h3></label>
-                <input type="text" class="form-control" id="inputCity">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputState"><h3>State</h3></label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
-            </div>
-            <div class="form-group col-md-2">
-                <label for="inputZip"><h3>Zip</h3></label>
-                <input type="text" class="form-control" id="inputZip">
-            </div>
-        </div>
+    </div>
+    </div>
 
-        <button type="submit" class="btn btn-primary"><h5>Submit</h5></button>
-        </form>
 
-        <div class="row">
-            <div class="col-12">
-                
 
-            </div>
-        </div>
+    </div>
 
 
 
