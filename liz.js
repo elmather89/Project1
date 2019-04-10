@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     // global variables
-    var indexTracker = 0;
 
     //configure firebase
     // ...
@@ -50,16 +49,43 @@ $(document).ready(function () {
       };
 
     // call search function (to test that response is working)
-    //.. searchOMDB("Mr. Nobody");
+    searchTrails();
 
     // hiking api end ===============================================
 
-    // ajax GET response - weather app
-
     // on-click event for first 2 trail btn clicks
-    // stores user's name
-    // stores user's 2 clicks
-    // run stateThree();
+      // stores user's name
+      // stores user's 2 clicks's values to Firebase
+      // run stateThree();
+      $("#submit").on("click", function(event) {
+          event.preventDefault();
+
+          // get value from input fields
+          var userName = $("#user-name").val().trim();
+          var userLocale = $("#user-locale").val().trim();
+          var userEmail = $("#user-email").val().trim();
+
+          // user object
+          var addUser = {
+              newUser: userName,
+              newLocale: userLocale,
+              newEmail: userEmail
+          };
+
+          // push to Firebase
+          database.ref().push(addUser);
+
+          // clear the input fields
+          $("#user-name").val("");
+          $("#user-locale").val("");
+          $("#user-email").val("");
+
+      });
+
+      database.ref().on("child_added", function(childSnapshot) {
+          var newUser = childSnapshot.val().userName;
+          var 
+      });
 
     // stateThree();
     // retrieve Firebase data for current user
