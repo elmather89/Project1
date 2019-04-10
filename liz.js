@@ -1,6 +1,11 @@
 $(document).ready(function () {
 
     // global variables
+  // get value from input fields
+  var userName = " ";
+  var userLast = "";
+  var userLocale = "";
+  var userEmail = "";
 
     // Initialize Firebase
     var config = {
@@ -24,11 +29,11 @@ $(document).ready(function () {
       $("#submit").on("click", function(event) {
         event.preventDefault();
 
-        // get value from input fields
-        var userName = $("#user-name").val().trim();
-        var userLast = $("#user-last-name").val().trim();
-        var userLocale = $("#user-locale").val().trim();
-        var userEmail = $("#user-email").val().trim();
+        userName = $("#user-name").val().trim();
+        userLast = $("#user-last-name").val().trim();
+        userLocale = $("#user-locale").val().trim();
+        userEmail = $("#user-email").val().trim();
+      
 
         // user object
         var addUser = {
@@ -77,7 +82,8 @@ $(document).ready(function () {
       var lon = "";
 
       var searchTrails = function(lat, lon) {
-          var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
+          // var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
+          var queryURL = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
 
           $.ajax({
               url: queryURL,
