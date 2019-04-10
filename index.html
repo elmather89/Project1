@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Garden App</title>
+    <title>Trail Maintenance</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -22,7 +22,6 @@
         .jumbotron {
             background-color: #0d0d0d;
         }
-        
     </style>
 
 </head>
@@ -47,11 +46,11 @@
                         <form class="p-4">
                             <div class="form-group">
                                 <label for="localforecast">Check your local forecast:</label>
-                                <input type="text" class="form-control" id="forecast">
+                                <input type="text" class="form-control" id="forecast" placeholder="Enter your zipcode">
                             </div>
                             <div class="form-group">
                                 <label for="trail">Find a trail Scheduled for maintenace near you:</label>
-                                <input type="text" class="form-control" id="maintenace">
+                                <input type="text" class="form-control" id="maintenace" placeholder="Enter your zipcode">
                             </div>
                         </form>
                     </div>
@@ -64,10 +63,10 @@
 
                                 <div class="col-6">
 
-                                    <input type="text" class="form-control" placeholder="First name">
+                                    <input type="text" class="form-control" id="user-name" placeholder="First name">
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" class="form-control" placeholder="Last name">
+                                    <input type="text" class="form-control" id="user-last-name" placeholder="Last name">
                                 </div>
 
                             </div>
@@ -76,7 +75,7 @@
 
                 </div>
                 <div class="pl-4 pb-5">
-                    <button type="submit" class="btn btn-secondary ">Submit</button>
+                    <button type="submit" class="btn btn-secondary" id="submit">Submit</button>
                 </div>
             </div>
 
@@ -95,6 +94,10 @@
 
     </div>
 
+    <!-- script links  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="../Project1/liz.js"></script>
 
 </body>
 
