@@ -8,7 +8,9 @@
     <title>Trail Maintenance</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+        
     <style>
         body {
             background-image: url("https://files.slack.com/files-pri/TD160CP16-FHSK5U0JZ/californiaflowerswaterhorizontal.jpg");
@@ -33,7 +35,16 @@
             <div class="row mt-5 pt-5">
                 <div class="col-12">
                     <div class="jumbotron text-center text-light ">
-                        <h1> Trail Maintence Scheduler</h1>
+                        <h1>Trail Maintence Scheduler</h1>
+                    </div>                    
+                </div>
+            </div>
+
+            <div class="row" id="hiddenDiv" style="display: none;">
+                <div class="col-sm-12">
+                    <div class="row" id="coords">
+                        <div class="col-sm-6" id="lat"></div>
+                        <div class="col-sm-6" id="lon"></div>
                     </div>
                 </div>
             </div>
@@ -46,11 +57,7 @@
                         <form class="p-4">
                             <div class="form-group">
                                 <label for="localforecast">Check your local forecast:</label>
-                                <input type="text" class="form-control" id="forecast" placeholder="Enter your zipcode">
-                            </div>
-                            <div class="form-group">
-                                <label for="trail">Find a trail Scheduled for maintenace near you:</label>
-                                <input type="text" class="form-control" id="maintenace" placeholder="Enter your zipcode">
+                                <input type="text" class="form-control" id="user-locale" placeholder="Enter your zip code">
                             </div>
                         </form>
                     </div>
@@ -74,6 +81,18 @@
                     </div>
 
                 </div>
+
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="form-group pl-4 pr-4">
+                            <label for="userEmail">Email:</label>
+                            <input type="text" class="form-control" id="user-email" placeholder="user@example.com">
+                        </div>
+
+                    </div>
+                </div>
+
                 <div class="pl-4 pb-5">
                     <button type="submit" class="btn btn-secondary" id="submit">Submit</button>
                 </div>
@@ -95,9 +114,8 @@
     </div>
 
     <!-- script links  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-    <script src="../Project1/liz.js"></script>
+    <script src="liz.js"></script>
+   
 
 </body>
 
