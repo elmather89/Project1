@@ -22,14 +22,19 @@ $(document).ready(function () {
 
     // geolocation === Tasneem
     navigator.geolocation.getCurrentPosition(function(position) {
-      console.log(position.coords.latitude);
-      console.log(position.coords.longitude);
+      // console.log(position.coords.latitude);
+      // console.log(position.coords.longitude);
+
+      // vars to hold coordinates data
+      var geoLat = position.coords.latitude;
+      var geoLon = position.coords.longitude;
+      console.log(geoLat, geoLon);
 
       // display lat and long in 2 divs
       $("#lat").text(position.coords.latitude);
       $("#lon").text(position.coords.longitude);
 
-    });
+// geolocation ended here previously
 
     // on-click event for first 2 trail btn clicks
       // stores user's name
@@ -92,7 +97,7 @@ $(document).ready(function () {
     // ajax call -- search hiking api function
       // takes vars lat & long, searches hiking api, passes data back up to hiking buttons func
       var searchTrails = function(lat, lon) {
-        var lat = $(this).html("data-lat");
+        var lat = $(geoLat).val().trim();
         var lon = $(this).html("data-lon");
   
           var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
@@ -108,7 +113,7 @@ $(document).ready(function () {
           });
       };
       searchTrails();
-
+    }); 
     // hiking api end ===============================================
 
     // stateThree();
@@ -124,5 +129,5 @@ $(document).ready(function () {
           var newLocale = instance.val().userLocale;
           var newEmail = instance.val().userEmail;
       });
-      
+         
 }); // end
