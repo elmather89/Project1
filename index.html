@@ -6,26 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trail Maintenance</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+
+<!-- style sheets  -->
+<link rel="stylesheet" href="../Project1/assets/reset.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../Project1/assets/style.css">
+
+<!-- script refs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
         
-    <style>
-        body {
-            background-image: url("https://files.slack.com/files-pri/TD160CP16-FHSK5U0JZ/californiaflowerswaterhorizontal.jpg");
-
-        }
-
-        .formbg {
-            background-color: #55626b;
-        }
-
-        .jumbotron {
-            background-color: #0d0d0d;
-        }
-    </style>
-
 </head>
 
 <body class="html">
@@ -42,9 +33,10 @@
 
             <div class="row" id="hiddenDiv" style="display: none;">
                 <div class="col-sm-12">
-                    <div class="row" id="coords">
-                        <div class="col-sm-6" id="lat"></div>
-                        <div class="col-sm-6" id="lon"></div>
+                    <div class="row">
+                        <div id="lat" style="display: none;"></div>
+                        <div id="lon" style="display: none;"></div>
+                        <div class="col-sm-12" id="coords"></div>
                     </div>
                 </div>
             </div>
