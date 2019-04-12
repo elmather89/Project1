@@ -20,10 +20,10 @@ $(document).ready(function () {
     };
     firebase.initializeApp(config);
 
+    var database = firebase.database();
+
     // geolocation === Tasneem
     navigator.geolocation.getCurrentPosition(function(position) {
-      // console.log(position.coords.latitude);
-      // console.log(position.coords.longitude);
 
       // vars to hold coordinates data
       var geoLat = position.coords.latitude;
@@ -34,7 +34,76 @@ $(document).ready(function () {
       $("#lat").text(position.coords.latitude);
       $("#lon").text(position.coords.longitude);
 
-// geolocation ended here previously
+      
+
+    // geolocation ended here
+
+      // hiking API === Liz ===========================================
+
+      // hiking buttons function to take data from hiking api and generate buttons
+      // var hikingBtns = function(data) {
+      //   var tableRow = $("<tr>");
+
+      //   for (var i = 0; i < data.trails.length; i++) {
+      //     var trailNameTd = $("<td>").text(data.trails[i].name);
+      //     var trailLocTd = $("<td>").text(data.trails[i].location);
+      //     var trailLenTd = $("<td>").text(data.trails[i].length);  
+      //   }
+
+      //   tableRow.append(trailNameTd, trailLocTd, trailLenTd);
+      //   $("#coords").append(tableRow);
+
+      //   console.log(data);
+      //   // console.log(response.trails[i].location);
+      //   // console.log(response.trails[i].length);
+
+      // };
+
+    // ajax call -- search hiking api function
+      // takes vars lat & long, searches hiking api, passes data back up to hiking buttons func
+      var searchTrails = function(lat, lon) {
+        var lat = `${lat}`;
+        var lon = `${lon}`;
+  
+          var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
+          // var queryURL = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
+
+          $.ajax({
+              url: queryURL,
+              method: "GET"
+          }).then(function(response) {
+            // console.log(response);
+
+              var results = response.trails;
+
+              var trailNames = [];
+              var trailLocations = [];
+              var trailLengths = [];
+              console.log(trailNames);
+              console.log(trailLocations);
+              console.log(trailLengths);
+              
+              for (var i = 0; i < results.length; i++) {
+                // console.log(response.trails[i]);
+                // console.log(trailsRes);
+
+                trailNames.push(results[i].name);           
+                trailLocations.push(results[i].location);           
+                trailLengths.push(results[i].length);
+
+                var trailBtns = $("<button>");
+                trailBtns.text(trailNames[i] + " Trail");
+                $("#coords").append(trailBtns);
+                console.log(trailBtns);
+                
+              }
+          });
+      };
+      searchTrails(geoLat, geoLon); 
+
+    // hiking api end ===============================================
+
+  }); // geolocation end
 
     // on-click event for first 2 trail btn clicks
       // stores user's name
@@ -59,7 +128,7 @@ $(document).ready(function () {
             lat: userLat,
             lon: userLon
         };
-        console.log(addUser);
+        // console.log(addUser);
 
         // push to Firebase
         database.ref().push(addUser);
@@ -72,62 +141,18 @@ $(document).ready(function () {
         $("#lat").val("");
         $("#lon").val("");
 
-    });
+        // trail buttons
+        
 
-    // dynamically generate weather info into a table
+      });
+
+    // dynamically generate weather info into a table === Tasneem
     //...
-
-    // hiking API === Liz ===========================================
-      // hiking buttons function to take data from hiking api and generate buttons
-      var hikingBtns = function(data) {
-
-          var trailBtn = $("<button>");
-
-          var trailName = (data.name);
-          var trailLocation = (data.location);
-          var trailLength = (data.length);
-
-          trailBtn.append(trailName, trailLocation, trailLength);
-
-          // append trailBtn to corresponding div
-          $("#coords").append(trailBtn);
-
-      };
-
-    // ajax call -- search hiking api function
-      // takes vars lat & long, searches hiking api, passes data back up to hiking buttons func
-      var searchTrails = function(lat, lon) {
-        var lat = $(geoLat).val().trim();
-        var lon = $(this).html("data-lon");
-  
-          var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
-          // var queryURL = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
-
-          $.ajax({
-              url: queryURL,
-              method: "GET"
-          }).then(function(response) {
-              hikingBtns(response);
-
-              console.log(response);
-          });
-      };
-      searchTrails();
-    }); 
-    // hiking api end ===============================================
 
     // stateThree();
     // retrieve Firebase data for current user
     // remove generated tables
     // dynamically generate Firebase data into a table
     // display a hiking gif?
-      var database = firebase.database();
-
-      // retrieve from Firebase
-      database.ref().on("value", function(instance) {
-          var newUser = instance.val().userName;
-          var newLocale = instance.val().userLocale;
-          var newEmail = instance.val().userEmail;
-      });
          
 }); // end
