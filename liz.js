@@ -41,23 +41,23 @@ $(document).ready(function () {
       // hiking API === Liz ===========================================
 
       // hiking buttons function to take data from hiking api and generate buttons
-      var hikingBtns = function(data) {
-        var tableRow = $("<tr>");
+      // var hikingBtns = function(data) {
+      //   var tableRow = $("<tr>");
 
-        for (var i = 0; i < data.trails.length; i++) {
-          var trailNameTd = $("<td>").text(data.trails[i].name);
-          var trailLocTd = $("<td>").text(data.trails[i].location);
-          var trailLenTd = $("<td>").text(data.trails[i].length);  
-        }
+      //   for (var i = 0; i < data.trails.length; i++) {
+      //     var trailNameTd = $("<td>").text(data.trails[i].name);
+      //     var trailLocTd = $("<td>").text(data.trails[i].location);
+      //     var trailLenTd = $("<td>").text(data.trails[i].length);  
+      //   }
 
-        tableRow.append(trailNameTd, trailLocTd, trailLenTd);
-        $("#coords").append(tableRow);
+      //   tableRow.append(trailNameTd, trailLocTd, trailLenTd);
+      //   $("#coords").append(tableRow);
 
-        console.log(data.trails[3].name);
-        // console.log(response.trails[i].location);
-        // console.log(response.trails[i].length);
+      //   console.log(data);
+      //   // console.log(response.trails[i].location);
+      //   // console.log(response.trails[i].length);
 
-      };
+      // };
 
     // ajax call -- search hiking api function
       // takes vars lat & long, searches hiking api, passes data back up to hiking buttons func
@@ -72,9 +72,31 @@ $(document).ready(function () {
               url: queryURL,
               method: "GET"
           }).then(function(response) {
-              hikingBtns(response);
+            // console.log(response);
 
-              console.log(response.trails[7].name);
+              var results = response.trails;
+
+              var trailNames = [];
+              var trailLocations = [];
+              var trailLengths = [];
+              console.log(trailNames);
+              console.log(trailLocations);
+              console.log(trailLengths);
+              
+              for (var i = 0; i < results.length; i++) {
+                // console.log(response.trails[i]);
+                // console.log(trailsRes);
+
+                trailNames.push(results[i].name);           
+                trailLocations.push(results[i].location);           
+                trailLengths.push(results[i].length);
+
+                var trailBtns = $("<button>");
+                trailBtns.text(trailNames + trailLocations + trailLengths);
+                $("#coords").append(trailBtns);
+                console.log(trailBtns);
+                
+              }
           });
       };
       searchTrails(geoLat, geoLon); 
