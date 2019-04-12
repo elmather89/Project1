@@ -1,11 +1,13 @@
 $(document).ready(function () {
 
-    // global variables
+  // global variables
   // get value from input fields
-  var userName = " ";
+  var userName = "";
   var userLast = "";
   var userLocale = "";
   var userEmail = "";
+  var userLat = "";
+  var userLon = "";
 
     // Initialize Firebase
     var config = {
@@ -19,8 +21,20 @@ $(document).ready(function () {
     firebase.initializeApp(config);
 
     // geolocation === Tasneem
-      // need geolocation to show lat & long response in 2 divs
-      // ... 
+    navigator.geolocation.getCurrentPosition(function(position) {
+      // console.log(position.coords.latitude);
+      // console.log(position.coords.longitude);
+
+      // vars to hold coordinates data
+      var geoLat = position.coords.latitude;
+      var geoLon = position.coords.longitude;
+      console.log(geoLat, geoLon);
+
+      // display lat and long in 2 divs
+      $("#lat").text(position.coords.latitude);
+      $("#lon").text(position.coords.longitude);
+
+// geolocation ended here previously
 
     // on-click event for first 2 trail btn clicks
       // stores user's name
@@ -33,29 +47,32 @@ $(document).ready(function () {
         userLast = $("#user-last-name").val().trim();
         userLocale = $("#user-locale").val().trim();
         userEmail = $("#user-email").val().trim();
-      
+        userLat = $("#lat").html().trim();
+        userLon = $("#lon").html().trim();
 
         // user object
         var addUser = {
             user: userName,
             last: userLast,
             locale: userLocale,
-            email: userEmail
+            email: userEmail,
+            lat: userLat,
+            lon: userLon
         };
-        console.log(addUser.user);
+        console.log(addUser);
 
         // push to Firebase
         database.ref().push(addUser);
 
         // clear the input fields
         $("#user-name").val("");
+        $("#user-last-name").val("");
         $("#user-locale").val("");
         $("#user-email").val("");
+        $("#lat").val("");
+        $("#lon").val("");
 
     });
-
-    // remove form 
-    // ...
 
     // dynamically generate weather info into a table
     //...
@@ -63,6 +80,7 @@ $(document).ready(function () {
     // hiking API === Liz ===========================================
       // hiking buttons function to take data from hiking api and generate buttons
       var hikingBtns = function(data) {
+
           var trailBtn = $("<button>");
 
           var trailName = (data.name);
@@ -72,27 +90,30 @@ $(document).ready(function () {
           trailBtn.append(trailName, trailLocation, trailLength);
 
           // append trailBtn to corresponding div
-          $(".row").append(trailBtn);
+          $("#coords").append(trailBtn);
 
       };
 
     // ajax call -- search hiking api function
       // takes vars lat & long, searches hiking api, passes data back up to hiking buttons func
-      var lat = "";
-      var lon = "";
-
       var searchTrails = function(lat, lon) {
-          // var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
-          var queryURL = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
+        var lat = $(geoLat).val().trim();
+        var lon = $(this).html("data-lon");
+  
+          var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
+          // var queryURL = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
 
           $.ajax({
               url: queryURL,
               method: "GET"
           }).then(function(response) {
               hikingBtns(response);
+
+              console.log(response);
           });
       };
-
+      searchTrails();
+    }); 
     // hiking api end ===============================================
 
     // stateThree();
@@ -108,5 +129,5 @@ $(document).ready(function () {
           var newLocale = instance.val().userLocale;
           var newEmail = instance.val().userEmail;
       });
-      
+         
 }); // end
