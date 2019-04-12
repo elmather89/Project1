@@ -92,7 +92,7 @@ $(document).ready(function () {
                 trailLengths.push(results[i].length);
 
                 var trailBtns = $("<button>");
-                trailBtns.text(trailNames + trailLocations + trailLengths);
+                trailBtns.text(trailNames[i] + " Trail");
                 $("#coords").append(trailBtns);
                 console.log(trailBtns);
                 
