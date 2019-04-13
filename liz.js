@@ -30,7 +30,7 @@ $(document).ready(function () {
     var geoLon = position.coords.longitude;
     console.log(geoLat, geoLon);
 
-    // display lat and long in 2 divs
+    // display lat, lon, and chosen-trail in hidden divs
     $("#lat").text(position.coords.latitude);
     $("#lon").text(position.coords.longitude);
 
@@ -97,6 +97,7 @@ $(document).ready(function () {
     if (chosenTrail === "") {
       return false;
     } else {
+      $("#chosen-trail").text(chosenTrail);
       console.log(chosenTrail);
     }
   };
@@ -114,6 +115,7 @@ $(document).ready(function () {
     userEmail = $("#user-email").val().trim();
     userLat = $("#lat").html().trim();
     userLon = $("#lon").html().trim();
+    userTrail = $("#chosen-trail").html().trim();
 
     // user object
     var addUser = {
@@ -122,7 +124,8 @@ $(document).ready(function () {
       locale: userLocale,
       email: userEmail,
       lat: userLat,
-      lon: userLon
+      lon: userLon,
+      chosen: userTrail
     };
     // console.log(addUser);
 
@@ -136,6 +139,7 @@ $(document).ready(function () {
     $("#user-email").val("");
     $("#lat").val("");
     $("#lon").val("");
+    $("#chosen-trail").val("");
 
   });
 
