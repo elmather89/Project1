@@ -72,7 +72,7 @@ $(document).ready(function () {
               url: queryURL,
               method: "GET"
           }).then(function(response) {
-            // console.log(response);
+            console.log(response);
 
               var results = response.trails;
 
@@ -92,11 +92,13 @@ $(document).ready(function () {
                 trailLengths.push(results[i].length);
 
                 var trailBtns = $("<button>");
-                trailBtns.text(trailNames[i] + " Trail");
+                trailBtns.text(trailNames[i] + " Trail" + " in " + trailLocations[i]);
+                trailBtns.addClass("btn btn-sm btn-dark");
                 $("#coords").append(trailBtns);
                 console.log(trailBtns);
                 
               }
+              $("#coords").prepend("<h2>Choose a trail to help clean, clear, and preserve!</h2>")
           });
       };
       searchTrails(geoLat, geoLon); 

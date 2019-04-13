@@ -1,6 +1,5 @@
 body {
     background-image: url("../assets/californiaFlowersWaterHorizontal.jpg");
-
 }
 
 .formbg {
@@ -9,4 +8,29 @@ body {
 
 .jumbotron {
     background-color: #0d0d0d;
+}
+
+.navbar-expand-lg {
+    font-family: 'Rock Salt', cursive;
+    padding: 30px;
+    background-color: black;
+    color: white;
+}
+
+.navbar-expand-lg h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 20px;
+}
+
+.btn {
+    padding: 10px;
+    margin: 5px;
+}
+
+#coords {
+    padding: 10px;
 }
