@@ -94,7 +94,7 @@ $(document).ready(function () {
   function storeDataVal() {
     var chosenTrail = $(this).attr("data-trail");
 
-    if (chosenTrail === "") {
+    if (chosenTrail == "" ) {
       return false;
     } else {
       $("#chosen-trail").text(chosenTrail);

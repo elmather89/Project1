@@ -10,6 +10,11 @@ body {
     background-color: #0d0d0d;
 }
 
+.btn:active{
+    border: solid 2px olivedrab !important;
+    cursor: pointer;
+}
+
 .navbar-expand-lg {
     font-family: 'Rock Salt', cursive;
     padding: 30px;
