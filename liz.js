@@ -38,6 +38,13 @@ $(document).ready(function () {
 
     // hiking API === Liz ===========================================
 
+    // cors issue
+    jQuery.ajaxPrefilter(function (options) {
+      if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+      }
+    });
+
     // ajax call -- search hiking api function
     // takes vars lat & long, searches hiking api, passes data back up to hiking buttons func
     var searchTrails = function (lat, lon) {
@@ -72,14 +79,63 @@ $(document).ready(function () {
 
           var trailBtns = $("<button>");
           trailBtns.text(trailNames[i] + " in " + trailLocations[i]);
-          trailBtns.addClass("btn btn-sm btn-dark selected");
-          trailBtns.attr("data-trail", results[i].name)
+          trailBtns.addClass("btn btn-sm btn-dark selected modal-trigger");
+          trailBtns.attr({ "data-trail": results[i].name, "data-target": "modal" + [i] });
           $("#coords").append(trailBtns);
           // console.log(trailBtns);
           // console.log(results[i].name);
 
         }
         $("#coords").prepend("<h2>Choose a trail to help clean, clear, and preserve!</h2>")
+      }).then(function (response) {
+        console.log("Response", lat, lon);
+
+        // var lat = `${lat}`;
+        // var lon = `${lon}`;
+
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=d996e8a8ae81a233d896691f36752f38";
+        // console.log(queryURL);
+
+        var cond = response
+
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function (data) {
+          // console.log(data);
+          // console.log(data.name);
+          // console.log(data.main.temp);
+          // console.log(data.weather[0].description);
+
+          var station = [];
+          var temp = [];
+          var conditions = [];
+          var convert = ((data.main.temp - 273.15) * 1.80 + 32);
+          // (K - 273.15) * 1.80 + 32
+          var decimals = convert;
+          var trimmedTemp = decimals.toFixed(2);
+          console.log(convert);
+
+          for (var i = 0; i <= convert.length + 5; i++) {
+            console.log(i);
+          }
+
+          // console.log(station);
+          // console.log(temp);
+          // console.log(conditions);
+
+          station.push(data.name);
+          temp.push(trimmedTemp);
+          conditions.push(data.weather[0].description);
+
+          var weatherDiv = $("<div>");
+          weatherDiv.text(station + ",  " + temp + "°" + ", " + conditions);
+          weatherDiv.addClass("text-center weather-div");
+          // trailBtns.attr({ "data-trail": results[i].name, "data-target": "modal" + [i] });
+          $("#weather").prepend(weatherDiv);
+          // console.log(weatherDiv);
+        });
+
       });
     };
     searchTrails(geoLat, geoLon);
@@ -94,15 +150,15 @@ $(document).ready(function () {
   function storeDataVal() {
     var chosenTrail = $(this).attr("data-trail");
 
-    if (chosenTrail == "" ) {
+    if (chosenTrail == "") {
       return false;
     } else {
       $("#chosen-trail").text(chosenTrail);
       console.log(chosenTrail);
     }
   };
-  
-  // on-click event for first 2 trail btn clicks
+
+  // on-click event for first trail btn click
   // stores user's name
   // stores user's 2 clicks's values to Firebase
   // run stateThree();
@@ -147,8 +203,8 @@ $(document).ready(function () {
 
   // event that's triggered by a new user being added to the database
   // add a table below the form for the firebase data
-  database.ref().on("child_added", function(childSnapshot) {
-    console.log(childSnapshot.val());
+  database.ref().on("child_added", function (childSnapshot) {
+    // console.log(childSnapshot.val());
 
     // variables
     var dataName = childSnapshot.val().user;

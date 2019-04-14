@@ -50,3 +50,9 @@ h2 {
     padding: 20px;
     margin: 20px;
 }
+
+.weather-div {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
