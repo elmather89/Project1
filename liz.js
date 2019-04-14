@@ -71,7 +71,7 @@ $(document).ready(function () {
           trailLengths.push(results[i].length);
 
           var trailBtns = $("<button>");
-          trailBtns.text(trailNames[i] + " Trail" + " in " + trailLocations[i]);
+          trailBtns.text(trailNames[i] + " in " + trailLocations[i]);
           trailBtns.addClass("btn btn-sm btn-dark selected");
           trailBtns.attr("data-trail", results[i].name)
           $("#coords").append(trailBtns);
@@ -141,15 +141,36 @@ $(document).ready(function () {
     $("#lon").val("");
     $("#chosen-trail").val("");
 
+    // modul alert to confirm form submission
+
+  });
+
+  // event that's triggered by a new user being added to the database
+  // add a table below the form for the firebase data
+  database.ref().on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
+
+    // variables
+    var dataName = childSnapshot.val().user;
+    var dataLast = childSnapshot.val().last;
+    var dataLocale = childSnapshot.val().locale;
+    var dataEmail = childSnapshot.val().email;
+    var dataChosen = childSnapshot.val().chosen;
+
+    // append a table with this data
+    var userRow = $("<tr>").append(
+      $("<td>").text(dataName),
+      $("<td>").text(dataLast),
+      $("<td>").text(dataLocale),
+      $("<td>").text(dataEmail),
+      $("<td>").text(dataChosen)
+    );
+
+    $(".user-table > tbody").append(userRow);
+
   });
 
   // dynamically generate weather info into a table === Tasneem
-  //...
-
-  // stateThree();
-  // retrieve Firebase data for current user
-  // remove generated tables
-  // dynamically generate Firebase data into a table
-  // display a hiking gif?
+  //...  
 
 }); // end

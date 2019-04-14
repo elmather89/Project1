@@ -7,19 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trail Maintenance</title>
 
-<!-- style sheets  -->
-<link rel="stylesheet" href="../Project1/assets/reset.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- style sheets  -->
+    <link rel="stylesheet" href="../Project1/assets/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../Project1/assets/style.css">
 
-<!-- google fonts -->
-<link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Permanent+Marker|Rock+Salt|Special+Elite" rel="stylesheet">
+    <!-- jquery and such -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
 
-<!-- script refs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-        
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Permanent+Marker|Rock+Salt|Special+Elite"
+        rel="stylesheet">
+
 </head>
 
 <body class="html">
@@ -29,7 +30,6 @@
     </nav>
     <!-- replace end  -->
     <div class="container">
-        <div class="card"></div>
         <div class="card-body ">
             <div class="row" id="hiddenDiv">
                 <div class="col-sm-12">
@@ -50,7 +50,8 @@
                         <form class="p-4">
                             <div class="form-group">
                                 <label for="localforecast">Check your local forecast:</label>
-                                <input type="text" class="form-control" id="user-locale" placeholder="Enter your zip code">
+                                <input type="text" class="form-control" id="user-locale"
+                                    placeholder="Enter your zip code">
                             </div>
                         </form>
                     </div>
@@ -92,7 +93,31 @@
             </div>
 
 
+        <!-- card body ended here previously -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" id="users">
+                    <div class="card-header">Volunteers</div>
+                        <div class="card-body">
+                            <table class="user-table table-sm table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Chosen Trail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
         </div>
+    </div>
 
     </div>
     </div>
@@ -107,8 +132,9 @@
     </div>
 
     <!-- script links  -->
-    <script src="liz.js"></script>
-   
+    <script type="text/javascript" src="liz.js"></script>
+    <script type="text/javascript" src="../Project1/materialize.js"></script>
+
 
 </body>
 

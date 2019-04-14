@@ -4,16 +4,17 @@ body {
 
 .formbg {
     background-color: #55626b;
+    border-radius: 5px;
 }
 
 .jumbotron {
     background-color: #0d0d0d;
 }
 
-.btn:active{
+/* .btn:active{
     border: solid 2px olivedrab !important;
     cursor: pointer;
-}
+} */
 
 .navbar-expand-lg {
     font-family: 'Rock Salt', cursive;
@@ -38,4 +39,14 @@ h2 {
 
 #coords {
     padding: 10px;
+}
+
+.user-table th, td {
+    box-sizing: border-box;
+    /* display: inline-block; */
+}
+
+.card {
+    padding: 20px;
+    margin: 20px;
 }
