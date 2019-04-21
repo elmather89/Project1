@@ -96,7 +96,7 @@ $(document).ready(function () {
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=d996e8a8ae81a233d896691f36752f38";
         // console.log(queryURL);
 
-        var cond = response
+        var cond = response;
 
         $.ajax({
           url: queryURL,
