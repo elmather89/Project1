@@ -24,6 +24,7 @@ $(document).ready(function () {
 
   // geolocation === Tasneem
   navigator.geolocation.getCurrentPosition(function (position) {
+    // console.log(position);
 
     // vars to hold coordinates data
     var geoLat = position.coords.latitude;
@@ -51,8 +52,8 @@ $(document).ready(function () {
       var lat = `${lat}`;
       var lon = `${lon}`;
 
-      var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
-      // var queryURL = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
+      // var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
+      var queryURL = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
 
       $.ajax({
         url: queryURL,
@@ -65,9 +66,9 @@ $(document).ready(function () {
         var trailNames = [];
         var trailLocations = [];
         var trailLengths = [];
-        console.log(trailNames);
-        console.log(trailLocations);
-        console.log(trailLengths);
+        // console.log(trailNames);
+        // console.log(trailLocations);
+        // console.log(trailLengths);
 
         for (var i = 0; i < results.length; i++) {
           // console.log(response.trails[i]);
