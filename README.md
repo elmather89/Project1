@@ -1,4 +1,4 @@
-![demo](./assets/hikingapp.mov)
+![demo](./assets/hikingappWeb.mov)
 # Hiking App (Group project)
 This project is powered by a google firebase database and allows users to sign up for trail maintenance volunteering at a trail near them.
 
