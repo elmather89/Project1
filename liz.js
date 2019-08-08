@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // var firebase = require('firebase/app');
 
   // global variables
   // get value from input fields
@@ -10,15 +11,16 @@ $(document).ready(function () {
   var userLon = "";
 
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB4VyTmaU_5FIQNcfpY0OcZxAdCb4ZuOZg",
-    authDomain: "project1-b74ea.firebaseapp.com",
-    databaseURL: "https://project1-b74ea.firebaseio.com",
-    projectId: "project1-b74ea",
-    storageBucket: "project1-b74ea.appspot.com",
-    messagingSenderId: "1097252927851"
+  var firebaseConfig = {
+    apiKey: "AIzaSyBFOjXGslEzeG1z9rdJTF4cwprpaLlW_Xc",
+    authDomain: "trail-maintenance.firebaseapp.com",
+    databaseURL: "https://trail-maintenance.firebaseio.com",
+    projectId: "trail-maintenance",
+    storageBucket: "",
+    messagingSenderId: "432198240047",
+    appId: "1:432198240047:web:645cdfa374a2dc94"
   };
-  firebase.initializeApp(config);
+  firebase.initializeApp(firebaseConfig);
 
   var database = firebase.database();
 
@@ -52,8 +54,8 @@ $(document).ready(function () {
       var lat = `${lat}`;
       var lon = `${lon}`;
 
-      // var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
-      var queryURL = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
+      var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
+      // var queryURL = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200444715-18e2274b2d33b9a8db21c47ddfab5855";
 
       $.ajax({
         url: queryURL,

@@ -15,9 +15,10 @@
 
     <!-- jquery and such -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-
-    <!-- google fonts -->
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>    <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Permanent+Marker|Rock+Salt|Special+Elite"
         rel="stylesheet">
 
@@ -93,13 +94,13 @@
             </div>
 
 
-        <!-- card body ended here previously -->
+            <!-- card body ended here previously -->
 
-        <div class="row">
-            <div class="col-md-12" id="weather"></div>
-            <div class="col-md-12">
-                <div class="card" id="users">
-                    <div class="card-header">Volunteers</div>
+            <div class="row">
+                <div class="col-md-12" id="weather"></div>
+                <div class="col-md-12">
+                    <div class="card" id="users">
+                        <div class="card-header">Volunteers</div>
                         <div class="card-body">
                             <table class="user-table table-sm table-striped">
                                 <thead>
@@ -115,10 +116,10 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     </div>
     </div>
